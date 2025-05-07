@@ -5,12 +5,16 @@ body {
   background-color: #f5f5f5;
   text-align: center;
   padding-top: 40px;
+  margin: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .container h1 {
   font-size: 2rem;
-  margin-bottom: 20px;
 }
+
 .wheel-wrapper {
   position: relative;
   width: 300px;
@@ -53,21 +57,32 @@ body {
 button {
   margin-top: 30px;
   padding: 10px 20px;
-  font-size: 1.2rem;
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-}
-
-button:disabled {
-  background-color: #aaa;
-  cursor: not-allowed;
-}
-
-h2 {
-  margin-top: 20px;
-  font-size: 1.5rem;
-  color: #333;
-}
+    font-size: 1.2rem;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  button:disabled {
+    background-color: #aaa;
+    cursor: not-allowed;
+  }
+  
+  h2 {
+    margin-top: 20px;
+    font-size: 1.5rem;
+    color: #333;
+  }
+  
+  .maps-button {
+    margin-top: "10px";
+    padding: "10px 15px";
+    font-size: "1rem";
+    background-color: "#005F73";
+    color: "white";
+    border: "none";
+    border-radius: "6px";
+    cursor: "pointer";
+  }

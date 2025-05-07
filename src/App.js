@@ -3,9 +3,21 @@ import "./index.css";
 
 function App() {
   const cuisines = [
-    "Italian", "Mexican", "Chinese", "Indian", "Japanese",
-    "Thai", "Greek", "Middle Eastern", "French", "Korean",
-    "Vietnamese", "Spanish", "American", "Lebanese", "Turkish"
+    "Italian",
+    "Mexican",
+    "Chinese",
+    "Indian",
+    "Japanese",
+    "Thai",
+    "Greek",
+    "Middle Eastern",
+    "French",
+    "Korean",
+    "Vietnamese",
+    "Spanish",
+    "American",
+    "Lebanese",
+    "Turkish",
   ];
 
   const [selectedCuisine, setSelectedCuisine] = useState("");
@@ -18,7 +30,7 @@ function App() {
     const slice = 360 / cuisines.length;
     const randomIndex = Math.floor(Math.random() * cuisines.length);
     const extraSpins = 5;
-    const finalRotation = (360 * extraSpins) - (randomIndex * slice);
+    const finalRotation = 360 * extraSpins - randomIndex * slice;
 
     setRotation(finalRotation);
     setSpinning(true);
@@ -33,8 +45,8 @@ function App() {
     <div className="container">
       <h1>What's for dinner?</h1>
       <div className="wheel-wrapper">
-        <div 
-          className="wheel" 
+        <div
+          className="wheel"
           style={{ transform: `rotate(${rotation}deg)` }}
         ></div>
         <div className="pointer">▲</div>
@@ -43,7 +55,22 @@ function App() {
         {spinning ? "Spinning..." : "Spin"}
       </button>
       {selectedCuisine && !spinning && (
-        <h2>You got: {selectedCuisine}</h2>
+        <div>
+          <h2>You got: {selectedCuisine}</h2>
+          <button
+            onClick={() =>
+              window.open(
+                `https://www.google.com/maps/search/${encodeURIComponent(
+                  selectedCuisine
+                )}+restaurants+near+me`,
+                "_blank"
+              )
+            }
+            className="maps-button"
+          >
+            Find nearby {selectedCuisine} restaurants
+          </button>
+        </div>
       )}
     </div>
   );
