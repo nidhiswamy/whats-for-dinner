@@ -1,65 +1,50 @@
-import React, { useState } from 'react';
-import './index.css';
-
-const styles = {
-  container: {
-    textAlign: "center",
-    marginTop: "100px",
-  },
-  heading: {
-    fontSize: "2rem",
-    marginBottom: "20px",
-  },
-  button: {
-    fontSize: "1.2rem",
-    padding: "10px 20px",
-    borderRadius: "8px",
-    border: "none",
-    backgroundColor: "#4CAF50",
-    color: "white",
-    cursor: "pointer",
-  },
-  result: {
-    marginTop: "30px",
-    fontSize: "1.8rem",
-    color: "#333",
-  },
-};
+import React, { useState } from "react";
+import "./index.css";
 
 function App() {
   const cuisines = [
-    "American",
-    "Indian",
-    "Mexican",
-    "Italian",
-    "Japanese",
-    "Chinese",
-    "Thai",
-    "Greek",
-    "Middle Eastern",
-    "French",
-    "Korean",
-    "Vietnamese",
-    "Lebanese",
-    "Turkish",
+    "Italian", "Mexican", "Chinese", "Indian", "Japanese",
+    "Thai", "Greek", "Middle Eastern", "French", "Korean",
+    "Vietnamese", "Spanish", "American", "Lebanese", "Turkish"
   ];
 
   const [selectedCuisine, setSelectedCuisine] = useState("");
+  const [spinning, setSpinning] = useState(false);
+  const [rotation, setRotation] = useState(0);
 
   const handleSpin = () => {
-    const randomIdx = Math.floor(Math.random() * cuisines.length)
-    setSelectedCuisine(cuisines[randomIdx])
-  }
+    if (spinning) return;
+
+    const slice = 360 / cuisines.length;
+    const randomIndex = Math.floor(Math.random() * cuisines.length);
+    const extraSpins = 5;
+    const finalRotation = (360 * extraSpins) - (randomIndex * slice);
+
+    setRotation(finalRotation);
+    setSpinning(true);
+
+    setTimeout(() => {
+      setSelectedCuisine(cuisines[randomIndex]);
+      setSpinning(false);
+    }, 4000);
+  };
 
   return (
-    <div style={styles.container}>
-      <header style={styles.heading}>
-        <h1>What's for dinner?</h1>
-      </header>
-      <button style={styles.button} onClick={handleSpin}>
-        Spin
+    <div className="container">
+      <h1>What's for dinner?</h1>
+      <div className="wheel-wrapper">
+        <div 
+          className="wheel" 
+          style={{ transform: `rotate(${rotation}deg)` }}
+        ></div>
+        <div className="pointer">▲</div>
+      </div>
+      <button onClick={handleSpin} disabled={spinning}>
+        {spinning ? "Spinning..." : "Spin"}
       </button>
-      <h2 style={styles.result}>You should eat: {selectedCuisine}</h2>
+      {selectedCuisine && !spinning && (
+        <h2>You got: {selectedCuisine}</h2>
+      )}
     </div>
   );
 }
