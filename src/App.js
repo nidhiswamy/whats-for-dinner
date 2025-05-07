@@ -41,8 +41,8 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#f5f5f5] font-[Inter] flex flex-col items-center justify-center p-4 text-center space-y-4">
-      <h1 className="text-2xl font-bold">What Cuisine Should I Eat Tonight?</h1>
+    <div className="min-h-screen font-sans flex flex-col items-center justify-center p-4 text-center space-y-4">
+      <h1 className="text-2xl font-bold">What's for dinner?</h1>
       <Wheel rotation={rotation} />
       <SpinButton handleSpin={handleSpin} spinning={spinning} />
       <Result

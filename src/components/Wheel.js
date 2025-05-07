@@ -1,6 +1,6 @@
 function Wheel({ rotation }) {
   return (
-    <div className="relative w-[300px] h-[300px] mx-auto">
+    <div className="relative w-[200px] sm:w-[300px] h-[200px] sm:h-[300px] mx-auto">
       <div
         className="w-full h-full rounded-full border-2 border-gray-800 shadow-lg transition-transform duration-[4000ms] ease-[cubic-bezier(0.33,1,0.68,1)]"
         style={{
